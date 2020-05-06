@@ -52,6 +52,18 @@
       </v-row>
     </v-container>
   </v-content>
+  <v-snackbar
+    v-model="snackbar"
+  >
+    {{ message }}
+    <v-btn
+      color="pink"
+      text
+      @click="snackbar = false"
+    >
+      Close
+    </v-btn>
+  </v-snackbar>
   </v-app>
 </template>
 
@@ -65,6 +77,7 @@
         user: new User('', ''),
         loading: false,
         message: '',
+        snackbar: false,
         rules: {
            required: value => !!value || 'Required',
            emailRules: [
@@ -88,6 +101,7 @@
       validate() {
         if (this.$refs.loginForm.validate()) {
           this.loading = true;
+          this.snackbar = false;
 
           this.$store.dispatch('auth/login', this.user).then(
             () => {
@@ -95,10 +109,8 @@
             },
             error => {
               this.loading = false;
-              this.message =
-                (error.response && error.response.data) ||
-                error.message ||
-                error.toString();
+              this.snackbar = true;
+              this.message = error.response.data.message.toString();
             }
           );
         }

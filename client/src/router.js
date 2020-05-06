@@ -8,10 +8,10 @@ Vue.use(Router);
 export const router = new Router({
   mode: 'history',
   routes: [
-    // {
-    //   path: '/',
-    //   redirect: '/rainbow',
-    // },
+    {
+      path: '/',
+      redirect: '/rainbow',
+    },
     {
       path: '/login',
       component: Login

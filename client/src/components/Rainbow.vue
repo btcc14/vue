@@ -20,7 +20,7 @@
         hide-default-footer
       >
       <template v-slot:item="props">
-        <tr>
+        <tr :style="{color: props.item.hex}">
           <td align="center">{{ props.item.name }}</td>
           <td align="center">{{ props.item.hex }}</td>
           <td align="center">{{ props.item.rgb }}</td>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import authHeader from './auth-token';
 
-const API_URL = 'http://localhost:3000/api/';
+const API_URL = 'https://vue-nest.herokuapp.com/api/';
 
 class RainbowService {
   getRainbows() {
